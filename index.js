@@ -36,8 +36,7 @@ app.post('/comment', function (req, res) {
 });
 
 
-app.get('/comments/:genreId/:bookId', function (req, res) {
-  console.log(req.params.genreId, req.params.bookId)
+app.get('/comments/:genreId/:bookId', function (req, res) { 
   var comments = miniDb.genres[req.params.genreId].books[req.params.bookId].comments
 
   return res.json(comments)
@@ -80,17 +79,16 @@ function getUniqueBookCoverId() {
     getUniqueBookCoverId()
   }
   else {
-    USED_BOOK_COVERS.push(coverId)
-    console.log("returned "+coverId)
+    USED_BOOK_COVERS.push(coverId) 
     return coverId
   }
 
 }
 
 function getUniqueGenreCoverId() {
-  var coverId = Math.floor(Math.random() * COVER_COUNT)
+  var coverId = Math.floor(Math.random() * COVER_COUNT) 
   if (coverId in USED_GENRE_COVERS) {
-    getUniqueGenreCoverId()
+   return getUniqueGenreCoverId()
   }
   else {
     USED_GENRE_COVERS.push(coverId)
@@ -110,7 +108,7 @@ function generateLib() {
 
  
 
-    miniDb.genres[i].featuredImg = getUniqueGenreCoverId() + ".jpg"
+    miniDb.genres[i].featuredImg = getUniqueGenreCoverId() + ".jpg" 
 
   }
 }
